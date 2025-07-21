@@ -22,7 +22,18 @@ import { CommunityModule } from './Community/help.module';
       database: process.env.DB_DATABASE,
       autoLoadEntities: true,
       synchronize: true,
-    }), AuthModule
+    
+      // 🔐 Add this block to enable SSL
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      extra: {
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      },
+    })
+    , AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
